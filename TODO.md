@@ -1,6 +1,0 @@
-- [x] Edit templates/hospital/admin_base.html: replace logout link with POST form
-- [x] Edit templates/hospital/doctor_base.html: replace logout link with POST form
-- [x] Edit templates/hospital/patient_base.html: replace logout link with POST form
-- [x] Edit templates/hospital/patient_wait_for_approval.html: replace logout link with POST form
-- [x] Edit templates/hospital/doctor_wait_for_approval.html: replace logout link with POST form
-- [x] Test logout functionality
