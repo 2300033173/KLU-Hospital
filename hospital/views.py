@@ -541,7 +541,16 @@ def doctor_dashboard_view(request):
     for a in appointments:
         patientid.append(a.patientId)
     patients=models.Patient.objects.all().filter(status=True,user_id__in=patientid).order_by('-id')
-    appointments=zip(appointments,patients)
+    # Fix: filter out patients with no profile_pic file to avoid template errors
+    patients_with_pic = []
+    for p in patients:
+        if p.profile_pic and hasattr(p.profile_pic, 'url'):
+            patients_with_pic.append(p)
+        else:
+            # Assign a default profile_pic url attribute to avoid template error
+            p.profile_pic_url = '/static/images/patient.jpg'
+            patients_with_pic.append(p)
+    appointments=zip(appointments,patients_with_pic)
     mydict={
     'patientcount':patientcount,
     'appointmentcount':appointmentcount,
