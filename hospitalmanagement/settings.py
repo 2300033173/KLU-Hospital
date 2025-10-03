@@ -28,7 +28,7 @@ SECRET_KEY = 'hpbv()ep00boce&o0w7z1h)st148(*m@6@-rk$nn)(n9ojj4c0'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', '.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*', '.railway.app', '.onrender.com', 'localhost', '127.0.0.1']
 
 
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,8 +86,8 @@ DATABASES = {
     }
 }
 
-# Railway deployment settings
-if 'RAILWAY_ENVIRONMENT' in os.environ:
+# Deployment settings
+if 'RAILWAY_ENVIRONMENT' in os.environ or 'RENDER' in os.environ:
     DEBUG = False
 
 

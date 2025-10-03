@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: klu-hospital
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn hospitalmanagement.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: RENDER
+        value: true
