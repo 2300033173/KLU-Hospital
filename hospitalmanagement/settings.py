@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,10 +24,10 @@ STATIC_DIR=os.path.join(BASE_DIR,'static')
 
 
 
-SECRET_KEY = 'hpbv()ep00boce&o0w7z1h)st148(*m@6@-rk$nn)(n9ojj4c0'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'hpbv()ep00boce&o0w7z1h)st148(*m@6@-rk$nn)(n9ojj4c0')
 
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = ['*', '.railway.app', '.onrender.com', 'localhost', '127.0.0.1']
 
@@ -79,12 +80,20 @@ WSGI_APPLICATION = 'hospitalmanagement.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# Database configuration
+if 'DATABASE_URL' in os.environ:
+    # Production database (Neon/PostgreSQL)
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    # Local development database (SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Deployment settings
 if 'RAILWAY_ENVIRONMENT' in os.environ or 'RENDER' in os.environ:

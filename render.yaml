@@ -9,3 +9,8 @@ services:
         value: 3.11.0
       - key: RENDER
         value: true
+      - key: DEBUG
+        value: false
+      # Add your Neon database URL here:
+      # - key: DATABASE_URL
+      #   value: postgresql://neondb_owner:password@host:5432/neondb?sslmode=require
