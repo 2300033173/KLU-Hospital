@@ -27,22 +27,55 @@
 ---
 
 ## HOW TO RUN THIS PROJECT
-- Install Python(3.7.6) (Dont Forget to Tick Add to Path while installing Python)
-- Open Terminal and Execute Following Commands :
-```
+
+### Local Development
+- Install Python(3.7.6+) (Don't forget to tick Add to Path while installing Python)
+- Open Terminal and Execute Following Commands:
+```bash
 pip install django==3.0.5
 pip install django-widget-tweaks
 pip install xhtml2pdf
+pip install Pillow
 ```
 - Download This Project Zip Folder and extract it
-- Move to the project folder in Terminal. Then run the following Commands :
-```
+- Move to the project folder in Terminal. Then run:
+```bash
 py manage.py makemigrations
 py manage.py migrate
+py manage.py setup_users
 py manage.py runserver
 ```
-- Now enter following URL in Your Browser Installed On Your Pc
+- Now enter following URL in Your Browser:
 ```
 http://127.0.0.1:8000/
 ```
+
+### Deployment Setup
+For deployment (Render, Railway, etc.), run:
+```bash
+python setup_deployment.py
+```
+Or manually:
+```bash
+python manage.py migrate
+python manage.py setup_users
+```
+
+## LOGIN CREDENTIALS
+
+**ADMIN:**
+- Username: `admin` | Password: `admin123`
+
+**DOCTORS:**
+- Username: `Cardiologist` | Password: `Cardiologist`
+- Username: `Dermatologist` | Password: `Dermatologist`
+- Username: `EMS` | Password: `EMS`
+- Username: `Allergist` | Password: `Allergist`
+- Username: `Anesthesiologist` | Password: `Anesthesiologist`
+- Username: `CRS` | Password: `CRS`
+
+**PATIENTS:**
+- Username: `patient1` | Password: `patient123`
+- Username: `patient2` | Password: `patient123`
+- Username: `patient3` | Password: `patient123`
 
