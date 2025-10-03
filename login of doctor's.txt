@@ -1,0 +1,22 @@
+ADMIN
+Username: admin | Password: admin123
+
+DOCTORS
+Username: Cardiologist | Password: Cardiologist
+
+Username: Dermatologist | Password: Dermatologist
+
+Username: EMS | Password: EMS
+
+Username: Allergist | Password: Allergist
+
+Username: Anesthesiologist | Password: Anesthesiologist
+
+Username: CRS | Password: CRS
+
+PATIENTS
+Username: patient1 | Password: patient123
+
+Username: patient2 | Password: patient123
+
+Username: patient3 | Password: patient123
