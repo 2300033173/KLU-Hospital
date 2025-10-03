@@ -81,10 +81,11 @@ WSGI_APPLICATION = 'hospitalmanagement.wsgi.application'
 
 
 # Database configuration
-if 'DATABASE_URL' in os.environ:
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
     # Production database (Neon/PostgreSQL)
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(DATABASE_URL)
     }
 else:
     # Local development database (SQLite)
