@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'hpbv()ep00boce&o0w7z1h)st148(*m@6@-rk
 
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['*', '.railway.app', '.onrender.com', '.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*', '.railway.app', 'localhost', '127.0.0.1']
 
 
 
@@ -89,8 +89,8 @@ DATABASES = {
     }
 }
 
-# Deployment settings
-if 'RAILWAY_ENVIRONMENT' in os.environ or 'RENDER' in os.environ:
+# Railway deployment settings
+if 'RAILWAY_ENVIRONMENT' in os.environ:
     DEBUG = False
 
 
@@ -133,7 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS=[STATIC_DIR,]
 
 MEDIA_URL = '/media/'
