@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py setup_users && gunicorn hospitalmanagement.wsgi --log-file -
+web: python manage.py migrate && python manage.py setup_users && gunicorn hospitalmanagement.wsgi:application --bind 0.0.0.0:$PORT
