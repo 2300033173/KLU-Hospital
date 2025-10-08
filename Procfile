@@ -1,0 +1,1 @@
+web: python manage.py migrate && python manage.py setup_users && gunicorn hospitalmanagement.wsgi --log-file -

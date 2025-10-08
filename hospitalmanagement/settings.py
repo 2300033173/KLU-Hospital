@@ -28,9 +28,9 @@ STATIC_DIR=os.path.join(BASE_DIR,'static')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'hpbv()ep00boce&o0w7z1h)st148(*m@6@-rk$nn)(n9ojj4c0')
 
 
-DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+DEBUG = True
 
-ALLOWED_HOSTS = ['*', '.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 
