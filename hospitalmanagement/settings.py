@@ -13,10 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from pathlib import Path
 
-try:
-    import dj_database_url
-except ImportError:
-    dj_database_url = None
+# Remove dj_database_url for Vercel
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -84,21 +81,13 @@ WSGI_APPLICATION = 'hospitalmanagement.wsgi.application'
 
 
 
-# Database configuration
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL and dj_database_url:
-    # Production database (Neon/PostgreSQL)
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL)
+# Database configuration - SQLite for Vercel
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-else:
-    # Local development database (SQLite)
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 # Deployment settings
 if 'RAILWAY_ENVIRONMENT' in os.environ or 'RENDER' in os.environ:
